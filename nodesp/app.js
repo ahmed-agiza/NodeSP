@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 
 var routes = require('./routes/index');
+var shortid = require('shortid');
+var fs = require('fs')
 
 
 var app = express();
@@ -23,9 +25,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-
-app.use('/uploads', express["static"](path.join(__dirname, 'uploads')));
 
 app.use(multer({
   dest: './uploads/',
@@ -50,6 +49,15 @@ app.use(multer({
     return shortid.generate() + "_" + Date.now();
   }
 }));
+
+var trashEntries = fs.readdirSync('./uploads');
+for(var i = 0; i < trashEntries.length; i++){
+    fs.unlink('./uploads/' + trashEntries[i]);
+}
+
+app.use('/', routes);
+
+app.use('/uploads', express["static"](path.join(__dirname, 'uploads')));
 
 
 // catch 404 and forward to error handler
