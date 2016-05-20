@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "Complex": "^3.0.0",
     "async": "^1.5.2",
     "body-parser": "~1.10.2",
     "connect-flash": "^0.1.1",
@@ -18,6 +19,7 @@
     "moment": "^2.13.0",
     "morgan": "~1.5.1",
     "multer": "^0.1.8",
+    "ndarray-wav": "^0.2.4",
     "rimraf": "^2.5.2",
     "serve-favicon": "~2.2.0",
     "shortid": "^2.2.6"
