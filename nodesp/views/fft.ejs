@@ -29,21 +29,15 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr>
-	        <td>1</td>
-	        <td>0.5</td>
-	        <td>0.7</td>
-	      </tr>
-	      <tr>
-	        <td>2</td>
-	        <td>0.25</td>
-	        <td>0.6</td>
-	      </tr>
-	      <tr>
-	        <td>3</td>
-	        <td>0.3</td>
-	        <td>0.1</td>
-	      </tr>
+
+				<% signal.forEach(function(sample, index) { %>
+					<tr>
+						<td><%= index %></td>
+						<td><%= sample.real.toFixed(5) %></td>
+						<td><%= fft[index].real.toFixed(5)%> + <%= fft[index].im.toFixed(5)%>i</td>
+					</tr>
+				<% }) %>
+
 	    </tbody>
 	  </table>
 	</div>

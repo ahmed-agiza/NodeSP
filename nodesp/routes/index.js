@@ -59,7 +59,7 @@ router.post('/fft', function(req, res, next) {
       */
 
 
-      res.render('fft', { title: 'NodeSP', fft:  result});
+      res.render('fft', { title: 'NodeSP', signal: complexSignal, fft:  result});
     });
 
 
