@@ -55,9 +55,15 @@ for(var i = 0; i < trashEntries.length; i++){
     fs.unlink('./uploads/' + trashEntries[i]);
 }
 
+trashEntries = fs.readdirSync('./temp');
+for(var i = 0; i < trashEntries.length; i++){
+    fs.unlink('./temp/' + trashEntries[i]);
+}
+
 app.use('/', routes);
 
 app.use('/uploads', express["static"](path.join(__dirname, 'uploads')));
+app.use('/temp', express["static"](path.join(__dirname, 'temp')));
 
 
 // catch 404 and forward to error handler

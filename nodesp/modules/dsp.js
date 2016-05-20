@@ -74,13 +74,25 @@ module.exports = {
       });
 
     },
-    LowPass: function (signal) {
-
+    LowPass: function (fft, cutoff, cb) {
+      for(var i = cutoff; i < fft.length; i++) {
+        fft[i] = new Complex(0, 0);
+      }
+      cb(null, fft);
     },
-    HighPass: function (signal) {
-
+    HighPass: function (fft, cutoff, cb) {
+      for(var i = 0; i < cutoff && i < fft.length; i++) {
+        fft[i] = new Complex(0, 0);
+      }
+      cb(null, fft);
     },
-    BandPass: function (signal) {
-
+    BandPass: function (fft, low, high, cb) {
+      for(var i = 0; i < low; i++) {
+        fft[i] = new Complex(0, 0);
+      }
+      for(var i = high; i < fft.length; i++) {
+        fft[i] = new Complex(0, 0);
+      }
+      cb(null, fft);
     }
 }
